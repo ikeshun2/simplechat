@@ -29,7 +29,7 @@ def lambda_handler(event, context):
         print("Processing message:", message)
 
         # 外部エンドポイントへの呼び出し
-        url = "https://xxx.ngrok-free.app"
+        url = "https://b40d-35-229-127-157.ngrok-free.app"
         req = urllib.request.Request(url, method='GET')
 
         with urllib.request.urlopen(req) as response:
