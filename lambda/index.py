@@ -29,7 +29,7 @@ def lambda_handler(event, context):
         print("Processing message:", message)
 
         # 外部エンドポイントへの呼び出し（POSTで /generate に送る）
-        url = "https://bd16-34-75-122-204.ngrok-free.app/generate"
+        url = "https://f71c-34-125-240-6.ngrok-free.app"
 
         payload = json.dumps({
             "prompt": message,
