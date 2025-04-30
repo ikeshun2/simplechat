@@ -28,9 +28,20 @@ def lambda_handler(event, context):
 
         print("Processing message:", message)
 
-        # 外部エンドポイントへの呼び出し
-        url = "https://bd16-34-75-122-204.ngrok-free.app"
-        req = urllib.request.Request(url, method='GET')
+        # 外部エンドポイントへの呼び出し（POSTで /generate に送る）
+        url = "https://bd16-34-75-122-204.ngrok-free.app/generate"
+
+        payload = json.dumps({
+            "prompt": message,
+            "max_new_tokens": 512
+        }).encode('utf-8')
+
+        req = urllib.request.Request(
+            url,
+            data=payload,
+            method='POST',
+            headers={"Content-Type": "application/json"}
+        )
 
         with urllib.request.urlopen(req) as response:
             content = response.read().decode('utf-8')
